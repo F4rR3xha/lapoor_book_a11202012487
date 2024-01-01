@@ -22,7 +22,7 @@ class _SplashPage extends State<SplashFull> {
     super.initState();
     // nanti bagian ini diganti cek koneksi ke firebase dan cek login
     Future.delayed(Duration.zero, (){
-      Navigator.pushReplacementNamed(context, '/register');
+      Navigator.pushReplacementNamed(context, '/login');
     });      
   }
 

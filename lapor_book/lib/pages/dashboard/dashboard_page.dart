@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lapor_book/components/styles.dart';
 import 'package:lapor_book/models/akun.dart';
+import 'package:lapor_book/pages/dashboard/all_laporan_page.dart';
+import 'package:lapor_book/pages/dashboard/my_laporan_page.dart';
+import 'package:lapor_book/pages/dashboard/profile_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -79,25 +82,34 @@ class _DashboardFull extends State<DashboardFull> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getAkun();
-    pages = <Widget>[
-      // AllLaporan(akun: akun),
-      // MyLaporan(akun: akun),
-      // Profile(akun: akun),
-    ];
   }
 
   bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    pages = <Widget>[
+      AllLaporan(
+        akun: akun,
+      ),
+      MyLaporan(
+        akun: akun,
+      ),
+      Profile(
+        akun: akun,
+      ),
+    ];
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         child: Icon(Icons.add, size: 35),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/add', arguments: {
+            'akun': akun,
+          });
+        },
       ),
       appBar: AppBar(
         backgroundColor: primaryColor,
