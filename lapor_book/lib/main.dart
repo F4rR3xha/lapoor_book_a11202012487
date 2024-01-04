@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:lapor_book/firebase_options.dart';
 import 'package:lapor_book/pages/add_form_page.dart';
 import 'package:lapor_book/pages/dashboard/dashboard_page.dart';
+import 'package:lapor_book/pages/detail_page.dart';
 import 'package:lapor_book/pages/login_page.dart';
 import 'package:lapor_book/pages/register_page.dart';
 import 'package:lapor_book/pages/splash_page.dart';
@@ -23,7 +24,7 @@ Future<void> main() async {
       '/register': (context) => const RegisterPage(),
       '/dashboard': (context) => const DashboardPage(),
       '/add': (context) => const AddFormPage(),
-      // '/detail': (context) => DetailPage(),
+      '/detail': (context) => const DetailPage(),
     },
   ));
 }

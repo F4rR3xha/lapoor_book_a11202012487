@@ -1,7 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors, use_build_context_synchronously, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lapor_book/components/input_widget.dart';
-
 import 'package:lapor_book/components/styles.dart';
 import 'package:lapor_book/components/validators.dart';
 
@@ -62,7 +62,7 @@ class LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(height: 50),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 30),
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
                       child: Form(
                           key: _formKey,
                           child: Column(
@@ -87,7 +87,7 @@ class LoginPageState extends State<LoginPage> {
                                       obscureText: true,
                                       decoration: customInputDecoration(""))),
                               Container(
-                                margin: EdgeInsets.only(top: 20),
+                                margin: const EdgeInsets.only(top: 20),
                                 width: double.infinity,
                                 child: FilledButton(
                                     style: buttonStyle,

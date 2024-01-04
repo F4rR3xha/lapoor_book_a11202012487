@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'styles.dart';
-
+// ignore: must_be_immutable
 class InputLayout extends StatelessWidget {
   String label;
   StatefulWidget inputField;
