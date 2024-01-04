@@ -1,3 +1,4 @@
+// ignore_for_file: sized_box_for_whitespace
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lapor_book/components/styles.dart';

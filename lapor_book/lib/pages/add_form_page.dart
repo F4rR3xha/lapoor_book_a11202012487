@@ -1,5 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, sized_box_for_whitespace
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -52,7 +52,7 @@ class _AddFormPageState extends State<AddFormPage> {
   Future<dynamic> uploadDialog(BuildContext context) {
     return showDialog(
         context: context,
-        builder: (BuildContext) {
+        builder: (context) {
           return AlertDialog(
             title: const Text('Pilih Sumber'),
             actions: [
@@ -218,6 +218,13 @@ class _AddFormPageState extends State<AddFormPage> {
                             bottom: 10,
                           ),
                           child: ElevatedButton(
+                            style: TextButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)
+                              ),
+                            ),
                             onPressed: () {
                               uploadDialog(context);
                             },
