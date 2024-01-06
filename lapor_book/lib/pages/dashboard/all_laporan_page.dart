@@ -25,6 +25,10 @@ class _AllLaporanState extends State<AllLaporan> {
       setState(() {
         listLaporan.clear();
         for (var documents in querySnapshot.docs) {
+          List<dynamic>? likeData = documents.data()['likes'];
+          List<Likes>? listLike = likeData?.map((e){
+            return Likes(email: e['email'], tanggal: e['tanggal'].toDate());
+          }).toList();
           listLaporan.add(
             Laporan(
               uid: documents.data()['uid'],
@@ -37,6 +41,7 @@ class _AllLaporanState extends State<AllLaporan> {
               maps: documents.data()['maps'],
               deskripsi: documents.data()['deskripsi'],
               gambar: documents.data()['gambar'],
+              like: listLike,
             ),
           );
         }

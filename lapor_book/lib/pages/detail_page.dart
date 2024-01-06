@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lapor_book/components/status_dialog.dart';
@@ -23,13 +23,59 @@ class _DetailPageState extends State<DetailPage> {
     }
   }
 
+  final _firestore = FirebaseFirestore.instance;
+
+  bool isShow = true;
+  late Laporan laporan;
+
   @override
   Widget build(BuildContext context) {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final Akun akun = arguments['akun'];
-    final Laporan laporan = arguments['laporan'];
+    setState(() {
+      laporan = arguments['laporan'];
+    });
+    Akun akun = arguments['akun'];
+
+    laporan.like?.forEach((element) {
+      if (element.email == akun.email) {
+        print(element.email);
+        setState(() {
+          isShow = false;
+        });
+      }
+    });
+
+    void addLikes() async {
+      CollectionReference transaksiCollection =
+          _firestore.collection('laporan');
+      try {
+        await transaksiCollection.doc(laporan.docId).update({
+          'likes': FieldValue.arrayUnion([
+            {
+              'email': akun.email,
+              'tanggal': DateTime.now()
+            }
+          ])
+        });
+
+        setState(() {
+          isShow = !isShow;
+        });
+      } catch (e) {
+        print(e);
+      }
+    }
+
     return Scaffold(
+      floatingActionButton: isShow
+          ? FloatingActionButton(
+              onPressed: () {
+                addLikes();
+              },
+              child: Icon(Icons.favorite),
+            )
+          : null,
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Text(
@@ -77,6 +123,9 @@ class _DetailPageState extends State<DetailPage> {
                         Colors.white),
                     textStatus(laporan.instansi, Colors.white, Colors.black),
                   ],
+                ),
+                const SizedBox(
+                  height: 15,
                 ),
                 const SizedBox(
                   height: 15,

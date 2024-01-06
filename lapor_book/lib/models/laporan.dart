@@ -11,6 +11,7 @@ class Laporan {
   final DateTime tanggal;
   final String maps;
   List<Komentar>? komentar;
+  List<Likes>? like;
 
   Laporan({
     required this.uid,
@@ -24,6 +25,7 @@ class Laporan {
     required this.tanggal,
     required this.maps,
     this.komentar,
+    this.like
   });
 }
 
@@ -34,5 +36,15 @@ class Komentar {
   Komentar({
     required this.nama,
     required this.isi,
+  });
+}
+
+class Likes {
+  final String email;
+  final DateTime tanggal;
+
+  Likes({
+    required this.email,
+    required this.tanggal,
   });
 }
