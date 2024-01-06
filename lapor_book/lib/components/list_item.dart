@@ -2,7 +2,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lapor_book/components/styles.dart';
 import 'package:lapor_book/components/vars.dart';
 import 'package:lapor_book/models/akun.dart';
@@ -143,7 +142,7 @@ class _ListItemState extends State<ListItem> {
                       ),
                     ),
                     child: Text(
-                      DateFormat('dd/MM/yyyy').format(widget.laporan.tanggal),
+                      '${widget.laporan.like != null ? widget.laporan.like?.length.toString() : '0'} suka',
                       style: headerStyle(
                         level: 5,
                         dark: false,
